@@ -52,3 +52,9 @@
 | Data Warehouse | Вычисление (узел-час) | Redshift Node (RA, DC, DS) | Synapse DWU‑hour |
 | AI Services (Translation) | Количество символов | TranslateText | Translator Text – characters |
 | CI/CD | Минуты сборки | Build Minutes (CodeBuild) | Build minutes (Azure Pipelines) |
+
+### Источники информации
+
+1. AWS to Azure services comparison – Microsoft Learn: https://learn.microsoft.com/en-us/azure/architecture/aws-professional/services  
+2. Azure Pricing overview – https://azure.microsoft.com/en-us/pricing/  
+3. AWS Pricing (см. источники к лабораторной работе №1) 
