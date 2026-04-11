@@ -118,3 +118,17 @@
 - Установлена полная классификация всех сервисов из предоставленного биллинга.
 - Пятиуровневая модель позволяет проводить анализ затрат от самого общего уровня (IT Tower) до конкретной единицы потребления (Service Usage Type).
 - Выявлено, что даже внутри одного сервиса (например, Amazon S3) могут существовать десятки различных типов потребления (раннее удаление, запросы разных уровней, хранение тегов).
+
+###  Источники информации
+
+1. AWS Redshift Pricing – https://aws.amazon.com/redshift/pricing/  
+2. AWS Directory Service Pricing – https://aws.amazon.com/directoryservice/pricing/  
+3. Amazon S3 Glacier Pricing – https://aws.amazon.com/glacier/pricing/  
+4. Amazon S3 Pricing – https://aws.amazon.com/s3/pricing/  
+5. Amazon SNS Pricing – https://aws.amazon.com/sns/pricing/  
+6. Amazon Translate Pricing – https://aws.amazon.com/translate/pricing/  
+7. Amazon Transcribe Pricing – https://aws.amazon.com/transcribe/pricing/  
+8. AWS CodePipeline Pricing – https://aws.amazon.com/codepipeline/pricing/  
+9. AWS CodeBuild Pricing – https://aws.amazon.com/codebuild/pricing/  
+10. Amazon Machine Learning Pricing – https://aws.amazon.com/machine-learning/pricing/  
+11. Amazon Polly Pricing – https://aws.amazon.com/polly/pricing/  
