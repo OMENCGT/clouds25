@@ -8,7 +8,11 @@
 - **Service Sub Type** – уточнение типа ресурса (Redshift Nodes, Early Delete, HTTP Delivery, ML Box Usage и т.д.).
 - **Service Usage Type** – конкретная единица потребления (RA Node, Data Scanned, S3 Standard Requests Tier 1, Train Model и т.д.).
 
-Информация о назначении и типах тарификации взята из официальной документации AWS (см. раздел «Источники»).
+---
+
+### Цель работы
+
+Получение навыков классификации облачных сервисов по уровням абстракции и типам потребления. Построение иерархической модели («IT Tower» → «Service Family» → «Service Type» → «Service Sub Type» → «Service Usage Type») на основе данных биллинга AWS.
 
 ---
 
