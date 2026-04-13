@@ -34,12 +34,12 @@
 
 | Product Code | IT Tower | Service Family | Обоснование |
 |--------------|----------|----------------|-------------|
-| AmazonRedshift | Cloud Services | Analytics | Fully managed cloud data warehouse для OLAP-аналитики [citation:1][citation:5][citation:9] |
-| AWSDirectoryService | Cloud Services | Security and Identity | Managed Microsoft AD, сервис управления идентификацией [citation:3][citation:7] |
-| AmazonGlacier | Storage | Storage&Content Delivery | Архивное хранилище, класс хранения S3 [citation:8] |
-| AmazonS3 | Storage | Storage&Content Delivery | Объектное хранилище [citation:4] |
+| AmazonRedshift | Cloud Services | Analytics | Fully managed cloud data warehouse для OLAP-аналитики |
+| AWSDirectoryService | Cloud Services | Security and Identity | Managed Microsoft AD, сервис управления идентификацией  |
+| AmazonGlacier | Storage | Storage&Content Delivery | Архивное хранилище, класс хранения S3 |
+| AmazonS3 | Storage | Storage&Content Delivery | Объектное хранилище |
 | AmazonSNS | Cloud Services | Application Services | Управляемый Pub/Sub сервис для микросервисов |
-| translate/transcribe/polly/ML | Cloud Services | Artificial Intelligence | AI/ML сервисы [citation:2] |
+| translate/transcribe/polly/ML | Cloud Services | Artificial Intelligence | AI/ML сервисы |
 | CodePipeline/CodeBuild | Cloud Services | Developer Tools | CI/CD сервисы |
 
 2. **Детализация Service Type, Service Sub Type, Service Usage Type** – определены на основе назначения каждого Usage Type:
