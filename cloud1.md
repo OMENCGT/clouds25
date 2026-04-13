@@ -32,17 +32,51 @@
 
 1. **Анализ Product Code и классификация** – для каждого Product Code определены IT Tower и Service Family в соответствии с данными из доков aws и примера:
 
-| Product Code | IT Tower | Service Family | Обоснование |
-|--------------|----------|----------------|-------------|
-| AmazonRedshift | Cloud Services | Analytics | Fully managed cloud data warehouse для OLAP-аналитики |
-| AWSDirectoryService | Cloud Services | Security and Identity | Managed Microsoft AD, сервис управления идентификацией  |
-| AmazonGlacier | Storage | Storage&Content Delivery | Архивное хранилище, класс хранения S3 |
-| AmazonS3 | Storage | Storage&Content Delivery | Объектное хранилище |
-| AmazonSNS | Cloud Services | Application Services | Управляемый Pub/Sub сервис для микросервисов |
-| translate/transcribe/polly/ML | Cloud Services | Artificial Intelligence | AI/ML сервисы |
-| CodePipeline/CodeBuild | Cloud Services | Developer Tools | CI/CD сервисы |
+| Product Code | IT Tower | Service Family | 
+|--------------|----------|----------------|
+| AmazonRedshift | Cloud Services | Analytics | 
+| AWSDirectoryService | Cloud Services | Security and Identity | 
+| AmazonGlacier | Storage | Storage&Content Delivery | 
+| AmazonS3 | Storage | Storage&Content Delivery | 
+| AmazonSNS | Cloud Services | Application Services | 
+| translate/transcribe/polly/ML | Cloud Services |
+| CodePipeline/CodeBuild | Cloud Services | Developer Tools |
 
-2. **Детализация Service Type, Service Sub Type, Service Usage Type** – определены на основе назначения каждого Usage Type:
+2. **Объяснение сервисов:**
+Amazon Redshift
+Корпоративное хранилище данных (OLAP). Нужен, чтобы быстро выполнять сложные аналитические запросы по большим объёмам данных (терабайты и петабайты). Используется для бизнес-аналитики.
+
+AWS Directory Service
+Управляемая версия Microsoft Active Directory в облаке. Нужен, чтобы администраторы могли управлять пользователями, политиками и доступом к ресурсам так же, как в локальном офисе, но без покупки и обслуживания своих серверов.
+
+Amazon Glacier
+Очень дешёвое, но медленное архивное хранилище. Нужно для данных, которые почти не используются, но должны сохраняться годами (например, старые бэкапы, архивы документов, логи). Доступ к данным долгий
+
+Amazon S3
+Объектное хранилище для любых данных: картинки, видео, бэкапы, логи, статика сайтов. Автоматически распределяет данные по разным классам хранения в зависимости от того, как часто к ним обращаются (от горячих до ледяных архивов).
+
+Amazon SNS (Simple Notification Service)
+Сервис для массовых уведомлений. Позволяет отправить одно сообщение сразу в несколько каналов: email, SMS, на мобильные устройства (iOS/Android) и в другие сервисы AWS. Нужен для оповещений пользователей или микросервисов о событиях.
+
+Amazon Translate
+Нейросетевой перевод текста. Переводит между 54 языками. Нужен, чтобы сделать приложение многоязычным или автоматически переводить документы и переписку.
+
+Amazon Transcribe
+Превращает речь в текст. Работает как с живым аудиопотоком (например, субтитры в прямом эфире), так и с записями (расшифровка лекций, совещаний, звонков).
+
+AWS CodePipeline
+Автоматическая сборка и доставка кода (CI/CD). Нужен разработчикам, чтобы при каждом изменении в репозитории автоматически собиралось приложение, прогонялись тесты и оно разворачивалось на серверах.
+
+AWS CodeBuild
+Запускает сборку кода в облаке. Не нужно поднимать свой сервер для компиляции. Просто платишь за минуты сборки.
+
+Amazon Machine Learning
+Старый сервис для создания простых моделей машинного обучения (бинарная классификация, регрессия) без глубокого понимания ML. Не требует написания кода.
+
+Amazon Polly
+Превращает текст в живую речь (нейросетевой синтез). Нужен для озвучивания статей, книг, голосовых помощников, аудио-версий контента.
+
+3. **Детализация Service Type, Service Sub Type, Service Usage Type** – определены на основе назначения каждого Usage Type:
    - Redshift: Node Usage (вычислительные узлы), RMS (управляемое хранилище), Spectrum (запросы к S3)
    - Directory Service: по типам директорий (Microsoft AD, Simple AD, Small, AD Connector)
    - Glacier: Provisioning, Storage, Requests, Early Delete
@@ -51,7 +85,7 @@
    - Transcribe: Streaming/Batch
    - ML: Train/Evaluate Model
 
-### Обоснование ключевых классификаций
+### Обоснование классификаций
 
 **Почему Redshift в Analytics, а не Database?**
 - Amazon Redshift — это **columnar OLAP data warehouse**, а не OLTP база данных
