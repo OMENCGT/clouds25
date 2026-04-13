@@ -59,18 +59,6 @@
 | Cloud Services | Application Services | Amazon EventBridge | Azure Scheduler |
 | Cloud Services | Security and Identity | AWS GuardDuty + Security Hub | Azure Sentinel |
 
-### Сохранение логической концепции из ЛР №1
-
-В ЛР №1 было установлено, что:
-- **Redshift (Analytics)** – потому что это columnar OLAP data warehouse
-- В Azure **Analysis Services** выполняет ту же функцию – аналитические модели и OLAP кубы
-
-- **AWS Directory Service (Security and Identity)** – управление идентификацией
-- В Azure **Key Vault** и **Sentinel** – управление секретами и SIEM, что также относится к Security and Identity
-
-- **AWS SNS (Application Services)** – управляемые сообщения
-- В Azure **Scheduler** и **Redis Cache** – управляемые сервисы приложений (планировщик и кэш)
-
 ### Вывод
 
 В ходе лабораторной работы №2:
