@@ -1,60 +1,83 @@
- 
-### Сравнение сервисов Amazon Web Services и Microsoft Azure. Создание единой кросс-провайдерной сервисной модели.
+# Лабораторная работа №2
+## Сравнение сервисов Amazon Web Services и Microsoft Azure. Создание единой кросс-провайдерной сервисной модели.
 
-#### 1 Сохранение принципов классификации
+### Цель работы
+Получение навыков аналитики и понимания спектра публичных облачных сервисов без привязки к вендору. Формирование комплексного видения Облака через единую сервисную модель.
 
-Из лабораторной работы №1 были зафиксированы следующие уровни:
-- IT Tower (Compute, Storage, Database, Analytics, Machine Learning, Developer Tools, Security, Application Integration и др.)
-- Service Family (Object Storage, Data Warehouse, AI Services, CI/CD, Messaging и т.д.)
-- Service Type (конкретный сервис AWS или Azure)
-- Service Sub Type (уточнение типа ресурса)
-- Service Usage Type (единица потребления)
+### Исходные данные
+- Файл `Azure lab team 1.csv` – полупустой биллинг Azure.
+- Классификация из первой лабы
 
-Для Azure были подобраны аналоги AWS-сервисов на основе функционального соответствия.
+### Выполненные шаги
 
-#### 2 Сопоставление сервисов AWS ↔ Azure
+1. **Сохранение принципов классификации из ЛР №1**  
+   В ЛР №1 были установлены следующие правила:
+   - Data warehouse сервисы → `Cloud Services` / `Analytics`
+   - OLTP базы данных → `Database` / `Database`
+   - Хранилища → `Storage` / `Storage&Content Delivery`
+   - Вычисления → `Compute` / `Compute`
+   - Сетевые сервисы → `Networking` / `Networking`
+   - AI/ML → `Cloud Services` / `Artificial Intelligence`
+   - Security сервисы → `Cloud Services` / `Security and Identity`
 
-| AWS Service | Azure Equivalent | Примечание |
-|-------------|------------------|-------------|
-| Amazon S3 | Azure Blob Storage | Объектное хранилище |
-| Amazon S3 Glacier | Azure Archive Storage | Холодное / архивное хранилище |
-| Amazon Redshift | Azure Synapse Analytics | Хранилище данных (ранее SQL DW) |
-| AWS Directory Service | Azure Active Directory Domain Services | Управляемые доменные службы |
-| Amazon SNS | Azure Event Grid / Notification Hubs | Управление уведомлениями |
-| Amazon Translate | Azure Translator Text | Машинный перевод |
-| Amazon Transcribe | Azure Speech to Text | Распознавание речи |
-| AWS CodePipeline | Azure Pipelines | CI/CD конвейеры |
-| AWS CodeBuild | Azure Pipelines (Build) | Сборка кода |
-| Amazon Machine Learning | Azure Machine Learning | Платформа машинного обучения |
-| Amazon Polly | Azure Text to Speech | Синтез речи |
+2. **Классификация Azure сервисов**
 
-#### 3 Построение единой кросс-провайдерной модели
+| Meter Category | IT Tower | Service Family | Обоснование (сравнение с AWS) |
+|----------------|----------|----------------|-------------------------------|
+| Analysis Services / Azure Analysis Services | Cloud Services | Analytics | Аналог AWS Redshift – OLAP аналитика |
+| Azure Data Factory | Cloud Services | Analytics | Аналог AWS Glue / ETL сервис |
+| Azure Database for PostgreSQL | Database | Database | OLTP база данных, аналог AWS RDS |
+| Cache / Redis Cache | Cloud Services | Application Services | Аналог AWS ElastiCache |
+| CDN / Content Delivery Network | Networking | Networking | Аналог AWS CloudFront |
+| Cloud Services (A,D,F,G,H,N серии) | Compute | Compute | Аналог AWS EC2 (разные семейства инстансов) |
+| Data Box | Storage | Storage&Content Delivery | Аналог AWS Snowball (офлайн перенос данных) |
+| Key Vault | Cloud Services | Security and Identity | Аналог AWS Secrets Manager / KMS |
+| Scheduler | Cloud Services | Application Services | Аналог AWS EventBridge / CloudWatch Events |
+| Sentinel | Cloud Services | Security and Identity | Аналог AWS GuardDuty + Security Hub (SIEM/SOAR) |
 
-| IT Tower | Service Family | AWS Service Type | Azure Service Type |
-|----------|----------------|------------------|--------------------|
-| Storage | Object Storage | Amazon S3 | Azure Blob Storage |
-| Storage | Archive Storage | Amazon S3 Glacier | Azure Archive Storage |
-| Analytics | Data Warehouse | Amazon Redshift | Azure Synapse Analytics |
-| Security, Identity & Compliance | Directory Service | AWS Directory Service | Azure AD Domain Services |
-| Application Integration | Messaging | Amazon SNS | Azure Event Grid / Notification Hubs |
-| Machine Learning | AI Services (Translation) | Amazon Translate | Azure Translator Text |
-| Machine Learning | AI Services (Speech) | Amazon Transcribe | Azure Speech to Text |
-| Machine Learning | AI Services (Speech Synthesis) | Amazon Polly | Azure Text to Speech |
-| Developer Tools | CI/CD | AWS CodePipeline + CodeBuild | Azure Pipelines |
-| Machine Learning | ML Platform | Amazon Machine Learning | Azure Machine Learning |
+3. **Детализация Service Type, Service Sub Type, Service Usage Type** – определены на основе назначения:
+   - Analysis Services: Tabular / Basic / Developer / Standard
+   - Data Factory: v2 / Business Analytics – Data Movement и Orchestration (Cloud vs Self Hosted IR)
+   - Redis Cache: по типам C%
+   - CDN: Standard CDN Data Transfer
+   - Cloud Services: по сериям виртуальных машин (A, D, F, G, H, N)
+   - Scheduler: Free / Standard Units
+   - Sentinel: Free Trial / Analysis
 
-#### 4 Пример унификации потребления (Service Usage Type)
+### Сравнительная таблица AWS ↔ Azure (на основе классификации)
 
-| Service Family | Service Usage Type (логическая) | AWS метрика | Azure метрика |
-|----------------|--------------------------------|-------------|---------------|
-| Object Storage | Хранение (ГБ в месяц) | TimedStorage-ByteHrs | Blob Storage Capacity (GB/month) |
-| Object Storage | Запросы (PUT/GET) | Requests-Tier1..6 | Storage Transactions |
-| Data Warehouse | Вычисление (узел-час) | Redshift Node (RA, DC, DS) | Synapse DWU‑hour |
-| AI Services (Translation) | Количество символов | TranslateText | Translator Text – characters |
-| CI/CD | Минуты сборки | Build Minutes (CodeBuild) | Build minutes (Azure Pipelines) |
+| IT Tower | Service Family | AWS сервис | Azure сервис |
+|----------|----------------|------------|--------------|
+| Cloud Services | Analytics | Amazon Redshift | Azure Analysis Services |
+| Cloud Services | Analytics | AWS Glue | Azure Data Factory |
+| Database | Database | Amazon RDS | Azure Database for PostgreSQL |
+| Cloud Services | Application Services | Amazon ElastiCache | Azure Redis Cache |
+| Networking | Networking | Amazon CloudFront | Azure CDN |
+| Compute | Compute | Amazon EC2 | Azure Cloud Services (VM) |
+| Storage | Storage&Content Delivery | AWS Snowball | Azure Data Box |
+| Cloud Services | Security and Identity | AWS KMS / Secrets Manager | Azure Key Vault |
+| Cloud Services | Application Services | Amazon EventBridge | Azure Scheduler |
+| Cloud Services | Security and Identity | AWS GuardDuty + Security Hub | Azure Sentinel |
 
-### Источники информации
+### Сохранение логической концепции из ЛР №1
 
-1. AWS to Azure services comparison – Microsoft Learn: https://learn.microsoft.com/en-us/azure/architecture/aws-professional/services  
-2. Azure Pricing overview – https://azure.microsoft.com/en-us/pricing/  
-3. AWS Pricing (см. источники к лабораторной работе №1) 
+В ЛР №1 было установлено, что:
+- **Redshift (Analytics)** – потому что это columnar OLAP data warehouse
+- В Azure **Analysis Services** выполняет ту же функцию – аналитические модели и OLAP кубы
+
+- **AWS Directory Service (Security and Identity)** – управление идентификацией
+- В Azure **Key Vault** и **Sentinel** – управление секретами и SIEM, что также относится к Security and Identity
+
+- **AWS SNS (Application Services)** – управляемые сообщения
+- В Azure **Scheduler** и **Redis Cache** – управляемые сервисы приложений (планировщик и кэш)
+
+### Вывод
+
+В ходе лабораторной работы №2:
+1. Сопоставлены сервисы AWS с их аналогами в Azure
+2. Сохранена иерархия: IT Tower → Service Family → Service Type → Service Sub Type → Service Usage Type
+3. Продемонстрирована возможность кросс-провайдерного анализа потребления облачных услуг
+
+Созданная модель позволяет:
+- Сравнивать затраты между AWS и Azure на уровне типов сервисов
+- Собирать инфу о потреблении по IT Tower и Service Family независимо от вендора
