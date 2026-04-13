@@ -54,16 +54,16 @@
 ### Обоснование ключевых классификаций
 
 **Почему Redshift в Analytics, а не Database?**
-- Amazon Redshift — это **columnar OLAP data warehouse**, а не OLTP база данных [citation:1][citation:9]
-- AWS официально относит Redshift к категории **Analytics** наравне с Athena, EMR, QuickSight [citation:5]
+- Amazon Redshift — это **columnar OLAP data warehouse**, а не OLTP база данных
+- AWS официально относит Redshift к категории **Analytics** наравне с Athena, EMR, QuickSight
 - Основное назначение — сложные аналитические запросы и BI, а не транзакционная обработка
 
 **Почему Directory Service в Security and Identity?**
-- AWS Directory Service входит в официальную категорию **Security, Identity & Compliance** [citation:3][citation:10]
+- AWS Directory Service входит в официальную категорию **Security, Identity & Compliance**
 - Сервис предоставляет managed Microsoft Active Directory для аутентификации и авторизации
 
 **Почему Glacier в Storage?**
-- Glacier — это архивный класс хранения Amazon S3 [citation:8]
+- Glacier — это архивный класс хранения Amazon S3
 - В биллинге отображается как ProductCode AmazonS3 для некоторых операций (EarlyDelete)
 
 ### Вывод
